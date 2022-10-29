@@ -1,5 +1,8 @@
 import 'package:ecommerce_faza/common/my_colors.dart';
+import 'package:ecommerce_faza/view/cart/cart.dart';
+import 'package:ecommerce_faza/view/checkout/checkout.dart';
 import 'package:ecommerce_faza/view/dashboard/dashboard.dart';
+import 'package:ecommerce_faza/view/product_detail/product_detail.dart';
 import 'package:ecommerce_faza/view/reset_password/reset_password.dart';
 import 'package:ecommerce_faza/view/sign_in/sign_in.dart';
 import 'package:ecommerce_faza/view/sign_up/sign_up.dart';
@@ -24,7 +27,10 @@ class MyApp extends StatelessWidget {
         '/dashboard': (context) => const DashboardPage(),
         '/sign-in': (context) => const SignInPage(),
         '/sign-up': (context) => const SignUpPage(),
-        '/reset-password' : (context) => const ResetPasswordPage()
+        '/reset-password': (context) => const ResetPasswordPage(),
+        '/product_detail': (context) => const ProductDetailPage(),
+        '/cart': (context) => const CartPage(),
+        '/checkout': (context) => const CheckoutPage(),
       },
       home: const MyHomePage(),
     );
@@ -33,7 +39,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -52,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.softGray,
-      body: const DashboardPage()
+      body: const CheckoutPage()
     );
   }
 }
