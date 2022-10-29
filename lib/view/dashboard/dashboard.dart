@@ -60,9 +60,10 @@ class _DashboardPageState extends State<DashboardPage> {
           Container(
             width: double.infinity,
             margin: const EdgeInsets.symmetric(vertical: 28),
-            child: FittedBox(
-              child: Image.asset('assets/images/banner/banner_1.png'),
-            ),
+            child: Image.asset('assets/images/banner/banner_1.png'),
+            // child: FittedBox(
+            //   child: Image.asset('assets/images/banner/banner_1.png'),
+            // ),
           ),
           const SizedBox(height: 28),
           Row(
