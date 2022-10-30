@@ -126,37 +126,5 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
     );
-    // return Container(
-    //   child: Column(
-    //     children: [
-    //       const SizedBox(height: 60),
-    //       Container(
-    //         margin: const EdgeInsets.symmetric(horizontal: 21),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //           children: [
-    //             Column(
-    //               children: [
-    //                 const Icon(Icons.arrow_back_ios_new),
-    //               ],
-    //             ),
-    //             Column(
-    //               children: [
-    //                 Text(
-    //                   'My Cart',
-    //                   style: MyStyle.pageTitle,
-    //                 ),
-    //               ],
-    //             ),
-    //             Column(
-    //               children: [
-    //               ],
-    //             )
-    //           ],
-    //         ),
-    //       )
-    //     ],
-    //   ),
-    // );
   }
 }
