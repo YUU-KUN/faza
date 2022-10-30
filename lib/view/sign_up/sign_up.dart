@@ -97,7 +97,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               onPressed: null,
               child: Text(
-                'Sign In',
+                'Sign Up',
                 style: MyStyle.pageTitle.copyWith(color: Colors.white),
               ),
             ),

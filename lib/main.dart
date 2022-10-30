@@ -1,7 +1,10 @@
 import 'package:ecommerce_faza/common/my_colors.dart';
+import 'package:ecommerce_faza/services/api_service.dart';
 import 'package:ecommerce_faza/view/cart/cart.dart';
+import 'package:ecommerce_faza/view/cart/cart_list.dart';
 import 'package:ecommerce_faza/view/checkout/checkout.dart';
 import 'package:ecommerce_faza/view/dashboard/dashboard.dart';
+import 'package:ecommerce_faza/view/dashboard/product_list.dart';
 import 'package:ecommerce_faza/view/product_detail/product_detail.dart';
 import 'package:ecommerce_faza/view/reset_password/reset_password.dart';
 import 'package:ecommerce_faza/view/sign_in/sign_in.dart';
@@ -45,19 +48,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.softGray,
-      body: const CheckoutPage()
+      body: const SignInPage(),
     );
   }
 }

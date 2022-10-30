@@ -72,7 +72,9 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
               ),
-              onPressed: null,
+              onPressed: () {
+                Navigator.pushNamed(context, '/dashboard');
+              },
               child: Text(
                 'Sign In',
                 style: MyStyle.pageTitle.copyWith(color: Colors.white),
