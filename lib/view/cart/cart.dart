@@ -12,6 +12,11 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  @protected
+  void initState() {
+    debugPrint('initState()');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +24,14 @@ class _CartPageState extends State<CartPage> {
         centerTitle: true,
         backgroundColor: MyColors.white,
         shadowColor: Colors.transparent,
-        leading: const Icon(
-          Icons.arrow_back_ios_new_rounded,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.black,
+          ),
         ),
         title: Text(
           'My Cart',
@@ -48,9 +58,8 @@ class _CartPageState extends State<CartPage> {
                 left: 40,
               ),
               decoration: BoxDecoration(
-                color: MyColors.white,
-                borderRadius: BorderRadius.circular(30)
-              ),
+                  color: MyColors.white,
+                  borderRadius: BorderRadius.circular(30)),
               child: Row(
                 children: [
                   Image.asset('assets/images/products/product_1.png'),
