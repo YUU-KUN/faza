@@ -13,6 +13,20 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  int _jumlah_produk = 1;
+
+  void _addProduct() {
+    setState(() {
+      _jumlah_produk++;
+    });
+  }
+
+  void _substractProduct() {
+    setState(() {
+      _jumlah_produk--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +34,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
           centerTitle: true,
           backgroundColor: MyColors.white,
           shadowColor: Colors.transparent,
-          leading: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: Colors.black,
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Colors.black,
+            ),
           ),
           title: Text(
             'Beli Langsung',
@@ -119,11 +138,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 IconButton(
-                                  onPressed: null,
+                                  onPressed: () {
+                                    _substractProduct();
+                                  },
                                   icon: Icon(Icons.remove,
                                       color: MyColors.primaryOrange),
                                 ),
-                                const Text('01'),
+                                Text(_jumlah_produk.toString()),
                                 IconButton(
                                   style: ButtonStyle(
                                     foregroundColor: MaterialStateProperty.all(
@@ -135,7 +156,10 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                       MyColors.primaryOrange,
                                     ),
                                   ),
-                                  onPressed: null,
+                                  onPressed: () {
+                                    debugPrint('add Produk');
+                                    _addProduct();
+                                  },
                                   icon: Icon(
                                     Icons.add,
                                     color: MyColors.primaryOrange,
@@ -160,34 +184,131 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   ),
                   const SizedBox(height: 15),
                   // Payment Method Container
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 17,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(64, 0, 0, 0),
-                            offset: Offset(0, 4),
-                            blurRadius: 4,
-                            spreadRadius: 0),
-                      ],
-                      color: MyColors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Pilih metode pembayaran ',
-                          style: MyStyle.productPrice,
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          content: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 22,
+                              vertical: 53,
+                            ),
+                            height: 260,
+                            child: Column(
+                              children: [
+                                // List Payment Container
+                                Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 13),
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(width: 1),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/icons/dollar.png',
+                                            width: 20,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            'Gopay',
+                                            style: MyStyle.paymentMethodsTitle,
+                                          ),
+                                        ],
+                                      ),
+                                      const Radio(
+                                        value: 'gopay',
+                                        groupValue: null,
+                                        onChanged: null,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 13),
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(width: 1),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/icons/dollar.png',
+                                            width: 20,
+                                          ),
+                                          const SizedBox(width: 10),
+                                          Text(
+                                            'OVO',
+                                            style: MyStyle.paymentMethodsTitle,
+                                          ),
+                                        ],
+                                      ),
+                                      const Radio(
+                                        value: 'ovo',
+                                        groupValue: null,
+                                        onChanged: null,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'Cancel'),
+                              child: const Text('Cancel'),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text('OK'),
+                            ),
+                          ],
                         ),
-                        const IconButton(
-                          onPressed: null,
-                          icon: Icon(Icons.arrow_forward_ios),
-                        )
-                      ],
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 17,
+                        vertical: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Color.fromARGB(64, 0, 0, 0),
+                              offset: Offset(0, 4),
+                              blurRadius: 4,
+                              spreadRadius: 0),
+                        ],
+                        color: MyColors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Pilih metode pembayaran ',
+                            style: MyStyle.productPrice,
+                          ),
+                          const IconButton(
+                            onPressed: null,
+                            icon: Icon(Icons.arrow_forward_ios),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -240,8 +361,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                   children: [
                                     // List Payment Container
                                     Container(
-                                      padding:
-                                          const EdgeInsets.symmetric(vertical: 13),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 13),
                                       decoration: const BoxDecoration(
                                         border: Border(
                                           bottom: BorderSide(width: 1),
@@ -274,8 +395,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                       ),
                                     ),
                                     Container(
-                                      padding:
-                                          const EdgeInsets.symmetric(vertical: 13),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 13),
                                       decoration: const BoxDecoration(
                                         border: Border(
                                           bottom: BorderSide(width: 1),
