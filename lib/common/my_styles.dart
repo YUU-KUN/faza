@@ -72,4 +72,10 @@ class MyStyle {
     fontWeight: FontWeight.w600,
     fontFamily: GoogleFonts.inter().fontFamily,
   );
+
+  static TextStyle paymentMethodsTitle = TextStyle(
+    fontSize: MyFontSize.text_20,
+    fontWeight: FontWeight.w600,
+    fontFamily: GoogleFonts.inter().fontFamily,
+  );
 }
